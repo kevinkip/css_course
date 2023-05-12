@@ -8,6 +8,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  /* full browser with min-height: 100vh; */
   min-height: 100vh;
   padding: 20px;
 }
@@ -15,15 +16,39 @@ body {
 .container {
   max-width: 800px;
   min-height: 400px;
-  margin-inline: auto;
+  margin-inline: auto; /* centered horizontally with the auto */
   border: 1px solid #000;
+  display: flex;
+  gap: 1rem;
+  justify-content: center; /* space-around not used often. Horizontal alignment */
+  align-items: center; /* vertical alignment */
+/*   flex-direction: row;
+  flex-wrap: wrap; */
+  flex-flow: row wrap; /* first is the flex-direction, second is the flex-wrap  */
+  align-content: space-evenly; /* aligns the rows */
 } 
 
 .box {
-  min-width: 100px;
-  min-height: 100px;
+  /* min-width: 100px; */
+  height: 100px;
   background-color: #000;
   color: #fff;
   font-size: 2rem;
   padding: 0.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* flex-basis: 250px; */ /* giving it a min-width */
+  /* flex-shrink: 1; */ /* if they need to shrink, they'll shrink the same amount */
+
+  flex: 1 1 150px; /* 1st value is grow, 2nd value is shrink, 3rd value is basis */
+}
+
+.box:nth-child(2){
+  /* after the 100px, whatever space is left, 2nd takes 2 for every 1 that the first takes */
+ /*  flex-shrink: 2; */ /* 2nd item shrink more than 1st */
+  flex: 2 2 150px;
+  order: 1;/*  placement of item. -1 puts it at the front */
 }
